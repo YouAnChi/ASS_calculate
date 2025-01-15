@@ -17,6 +17,138 @@
 - tqdm (>=4.65.0)：进度条显示
 - scikit-learn (>=1.2.2)：科学计算工具
 
+## 使用 pyenv 安装 Python 3.9.6（推荐方法）
+
+### Windows 系统
+1. 安装 pyenv-win
+   ```bash
+   # 使用 PowerShell 安装
+   Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
+   ```
+
+2. 安装 Python 3.9.6
+   ```bash
+   # 查看可用的 Python 版本
+   pyenv install --list
+
+   # 安装 Python 3.9.6
+   pyenv install 3.9.6
+
+   # 设置全局 Python 版本（可选）
+   pyenv global 3.9.6
+   ```
+
+3. 创建虚拟环境
+   ```bash
+   # 进入项目目录
+   cd 项目路径
+
+   # 确保使用 Python 3.9.6
+   pyenv local 3.9.6
+
+   # 创建虚拟环境
+   python -m venv venv
+
+   # 激活虚拟环境
+   .\venv\Scripts\activate
+   ```
+
+### macOS 系统
+1. 安装 pyenv
+   ```bash
+   # 安装 Homebrew（如果没有）
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+   # 安装 pyenv
+   brew install pyenv
+
+   # 配置 shell 环境
+   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+   echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+   echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+   source ~/.zshrc
+   ```
+
+2. 安装 Python 3.9.6
+   ```bash
+   # 安装依赖（确保 Python 编译成功）
+   brew install openssl readline sqlite3 xz zlib tcl-tk
+
+   # 安装 Python 3.9.6
+   pyenv install 3.9.6
+
+   # 设置全局 Python 版本（可选）
+   pyenv global 3.9.6
+   ```
+
+3. 创建虚拟环境
+   ```bash
+   # 进入项目目录
+   cd 项目路径
+
+   # 确保使用 Python 3.9.6
+   pyenv local 3.9.6
+
+   # 创建虚拟环境
+   python -m venv venv
+
+   # 激活虚拟环境
+   source venv/bin/activate
+   ```
+
+### Linux 系统
+1. 安装 pyenv
+   ```bash
+   # 安装依赖
+   sudo apt-get update
+   sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
+   libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \
+   libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl
+
+   # 安装 pyenv
+   curl https://pyenv.run | bash
+
+   # 配置 shell 环境
+   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+   echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+   echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+   source ~/.bashrc
+   ```
+
+2. 安装 Python 3.9.6
+   ```bash
+   # 安装 Python 3.9.6
+   pyenv install 3.9.6
+
+   # 设置全局 Python 版本（可选）
+   pyenv global 3.9.6
+   ```
+
+3. 创建虚拟环境
+   ```bash
+   # 进入项目目录
+   cd 项目路径
+
+   # 确保使用 Python 3.9.6
+   pyenv local 3.9.6
+
+   # 创建虚拟环境
+   python -m venv venv
+
+   # 激活虚拟环境
+   source venv/bin/activate
+   ```
+
+### 验证安装
+完成安装后，验证 Python 版本：
+```bash
+# 确认 Python 版本
+python --version  # 应显示 Python 3.9.6
+
+# 确认 pip 可用
+pip --version
+```
+
 ## 详细安装步骤
 
 ### Windows系统安装步骤
