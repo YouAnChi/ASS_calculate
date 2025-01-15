@@ -149,6 +149,98 @@ python --version  # 应显示 Python 3.9.6
 pip --version
 ```
 
+## pyenv 完整设置指南
+
+在使用 pyenv 管理 Python 版本时，需要正确配置环境变量和 shell 集成。以下是完整的设置步骤：
+
+### macOS 系统（使用 zsh）
+
+1. 安装 pyenv（如果尚未安装）
+   ```bash
+   # 使用 Homebrew 安装 pyenv
+   brew install pyenv
+   ```
+
+2. 配置 shell 环境
+   ```bash
+   # 添加以下配置到 ~/.zshrc 文件
+   echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+   echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+   echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+
+   # 重新加载配置
+   source ~/.zshrc
+   ```
+
+3. 安装并设置 Python 3.9.6
+   ```bash
+   # 安装 Python 3.9.6
+   pyenv install 3.9.6
+
+   # 进入项目目录
+   cd 项目路径
+
+   # 设置本地 Python 版本
+   pyenv local 3.9.6
+
+   # 验证 Python 版本
+   python --version  # 应显示 Python 3.9.6
+   ```
+
+4. 创建并激活虚拟环境
+   ```bash
+   # 创建新的虚拟环境
+   python -m venv venv
+
+   # 激活虚拟环境
+   source venv/bin/activate
+   ```
+
+### 常见问题解决
+
+1. 如果遇到 "pyenv: shell integration not enabled" 错误
+   - 确保已经完成了第 2 步中的 shell 环境配置
+   - 重新打开终端或执行 `source ~/.zshrc`
+
+2. 如果 Python 版本不正确
+   - 确保在项目目录下执行了 `pyenv local 3.9.6`
+   - 确保虚拟环境已经激活（命令行前面应该显示 `(venv)`）
+   - 使用 `pyenv versions` 命令检查当前使用的 Python 版本
+
+3. 如果虚拟环境激活失败
+   - 确保在正确的目录下创建了虚拟环境
+   - 确保使用正确的激活命令：`source venv/bin/activate`
+
+### 验证安装
+完成所有步骤后，可以通过以下命令验证环境：
+```bash
+# 检查 Python 版本
+python --version  # 应显示 3.9.6
+
+# 检查 pip 版本
+pip --version
+
+# 检查虚拟环境
+which python  # 应显示项目目录下的 venv/bin/python 路径
+```
+
+### 更新 pip 版本
+在安装依赖包之前，建议先将 pip 更新到最新版本，以避免可能的兼容性问题：
+
+```bash
+# 确保虚拟环境已激活（命令行前面应显示 (venv)）
+# 更新 pip 到最新版本
+python -m pip install --upgrade pip
+
+# 验证更新后的版本
+pip --version  # 应显示 24.3.1 或更新的版本
+```
+
+注意事项：
+1. 更新 pip 版本可以避免一些依赖包的安装问题
+2. 如果看到 pip 版本过低的警告，请务必按照上述步骤更新
+3. 更新完 pip 后，再执行 `pip install -r requirements.txt` 安装项目依赖
+
 ## 详细安装步骤
 
 ### Windows系统安装步骤
